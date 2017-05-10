@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Firebase.Auth;
+using UnityEngine.SceneManagement;
 
 public class LoginAndRegistration : MonoBehaviour {
 
@@ -161,6 +162,8 @@ public class LoginAndRegistration : MonoBehaviour {
                 Debug.LogFormat("User signed in successfully: {0} ({1})",
                     newUser.DisplayName, newUser.UserId);
             });
+            // Load the next scene
+            SceneManager.LoadScene(1);
         }
         else
         {

@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
     {
-        if (!canAttack)
+        if (!canAttack && Input.touchCount == 1)
         {
             selectedFriendlyPiece = CheckTouch("Friendly Piece");
         }
@@ -45,11 +45,11 @@ public class PlayerController : MonoBehaviour
             canMove = false;
         }
 
-        if (canAttack)
+        if (canAttack && Input.touchCount == 1)
         {
             Attack(CheckTouch ("Enemy Piece"));
         }
-        if (canMove)
+        if (canMove && Input.touchCount == 1)
         {
             Move(CheckTouch("Space"));
         }
@@ -58,37 +58,41 @@ public class PlayerController : MonoBehaviour
     // Check the touch input to see if any board pieces have been selected
     GameObject CheckTouch (string tag)
     {
-        if (Input.touchCount == 1)
+        Touch selectionTouch = Input.GetTouch(0);
+
+        // Check if the touch has begun and set the starting position
+        if (selectionTouch.phase == TouchPhase.Began)
         {
-            Touch selectionTouch = Input.GetTouch(0);
+            startPos = selectionTouch.position;
+        }
 
-            // Check if the touch has begun and set the starting position
-            if (selectionTouch.phase == TouchPhase.Began)
+        // Check if the touch has ended and set an ending position
+        if (selectionTouch.phase == TouchPhase.Ended)
+        {
+            endPos = selectionTouch.position;
+            // Check if the starting and ending positions are the same
+            if (startPos == endPos)
             {
-                startPos = selectionTouch.position;
-            }
+                // If the start and end positions are the same cast a Ray from the ending position
+                Ray ray = Camera.main.ScreenPointToRay(endPos);
+                RaycastHit hit;
 
-            // Check if the touch has ended and set an ending position
-            if (selectionTouch.phase == TouchPhase.Ended)
-            {
-                endPos = selectionTouch.position;
-                // Check if the starting and ending positions are the same
-                if (startPos == endPos)
+                // If the ray hits something check what it hit
+                if (Physics.Raycast(ray, out hit))
                 {
-                    // If the start and end positions are the same cast a Ray from the ending position
-                    Ray ray = Camera.main.ScreenPointToRay(endPos);
-                    RaycastHit hit;
-
-                    // If the ray hits something check what it hit
-                    if (Physics.Raycast(ray, out hit))
+                    // If the hit is tagged by the tag parameter return it
+                    if (hit.transform.tag == tag)
                     {
-                        // If the hit is tagged by the tag parameter return it
-                        if (hit.transform.tag == tag)
+                        print("Selected Object: " + hit.transform.gameObject);
+                        if (tag.Equals ("Friendly Piece"))
                         {
-                            print("Selected Object: " + hit.transform.gameObject);
                             friendlyPieceStats = hit.transform.GetComponent<PhysicalStats>();
-                            return hit.transform.gameObject;
                         }
+                        else if (tag.Equals ("Enemy Piece"))
+                        {
+                            enemyPieceStats = hit.transform.GetComponent<PhysicalStats>();
+                        }
+                        return hit.transform.gameObject;
                     }
                 }
             }
@@ -102,7 +106,7 @@ public class PlayerController : MonoBehaviour
         if (spaceToMoveTo != null)
         {
             Rigidbody rb = selectedFriendlyPiece.GetComponent<Rigidbody>();
-            rb.MovePosition(spaceToMoveTo.transform.position * Time.deltaTime);
+            rb.MovePosition((spaceToMoveTo.transform.position + new Vector3 (0, 1.75f, 0)) * Time.deltaTime);
         }
     }
 
@@ -111,11 +115,11 @@ public class PlayerController : MonoBehaviour
     {
         if (enemyToAttack != null)
         {
-            float distanceBetweenPieces = ((enemyToAttack.transform.position - selectedFriendlyPiece.transform.position).magnitude) / 2f;
-            print("Distance between pieces: " + distanceBetweenPieces);
-            print("Selected enemy: " + enemyToAttack);
             if (friendlyPieceStats != null)
             {
+                float distanceBetweenPieces = ((enemyToAttack.transform.position - selectedFriendlyPiece.transform.position).magnitude) / 2f;
+                print("Distance between pieces: " + distanceBetweenPieces);
+                print("Selected enemy: " + enemyToAttack);
                 if (distanceBetweenPieces <= friendlyPieceStats._range)
                 {
                     attacksRemaining--;

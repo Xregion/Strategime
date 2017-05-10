@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 11
+  controlID: 128
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 12
+  controlID: 129
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 94
+  controlID: 24
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -391,7 +391,7 @@ MonoBehaviour:
     width: 1079
     height: 437
   m_SceneLighting: 0
-  lastFramingTime: 6979.83162934029
+  lastFramingTime: 468.3607255252327
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
@@ -421,13 +421,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.15457074, y: 0.6954708, z: -0.15722515, w: 0.68387294}
+    m_Target: {x: -0.34628645, y: -0.057375956, z: 0.021236487, w: -0.9361099}
     speed: 2
-    m_Value: {x: 0.15457074, y: 0.69547075, z: -0.15722515, w: 0.68387294}
+    m_Value: {x: -0.34629354, y: -0.057377134, z: 0.021236923, w: -0.9361291}
   m_Size:
-    m_Target: 20.482832
+    m_Target: 19.786482
     speed: 2
-    m_Value: 20.482832
+    m_Value: 19.786482
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -541,9 +541,9 @@ MonoBehaviour:
     height: 551
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8e250000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 64f9ffff04faffffccfaffffdafbffff00000000
+    m_ExpandedIDs: 82eaffffdafbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -562,7 +562,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
   m_ExpandedScenes:
-  - title
+  - main
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -603,18 +603,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Editor Default Resources
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets
+  - Assets/Editor Default Resources
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Kyle\Documents\GitHub\Strategime
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5c250000
-    m_LastClickedID: 9564
+    m_SelectedIDs: 6e260000
+    m_LastClickedID: 9838
     m_ExpandedIDs: 000000005c25000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -674,18 +674,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: f2040000ee0400005885fbff12730000f40400001a0500003a05000026050000fc1b0000f81b0000fa1b0000fe1b0000001c00007a1c0000e01c0000ee2900003c0bffffae1e0000de1b0000481c00000c1c00004e1c000000000000c2250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: LoginAndRegistration
+      m_OriginalName: LoginAndRegistration
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 1724
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
